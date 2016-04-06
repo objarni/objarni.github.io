@@ -19,6 +19,30 @@ C:\prj\project\.gitignore      # Make sure you ignore .svn, and svn ignore this 
 <h3>svnup bash script</h3>
 A helper script that simplifies fetching and merging changes from the svn repository.
 
+<pre>
+# svnup git+svn utility script
+if [[ $# -eq 0 ]] ; then
+    echo 'Usage: svnup <branchname>'
+    echo 'Helper script for git+svn. Will update the master branch with latest'
+    echo 'changes from svn server, autocommit that to master, jump back to'
+    echo '<branchname> and rebase on master. Stops immediately on any fail.'
+    exit 1
+fi
+
+if [[ $1 == "master" ]]; then
+        echo 'Cannot svnup on master branch, only other branches.'
+        exit 1
+fi
+
+set -e
+git checkout $1
+git checkout master
+svn up
+git add .
+git commit -m 'autocommit from svnup: changes from svn server' || true
+git checkout $1
+git rebase master
+</pre>
 
 <h3>.gitignore</h3>
 <ul>
