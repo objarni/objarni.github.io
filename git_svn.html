@@ -8,12 +8,12 @@ while still enabling fetching changes from upstream anytime I want to, e.g. dail
 is never pushed anywhere - it just lives locally, inside of the checked out svn repository folder, like so:</i>
 
 <pre>
-C:\prj\project\                # projects root folder
-C:\prj\project\subfolder       # some subproject with source code etc.
-C:\prj\project\.svn            # this goes in the root and all subdirs
-C:\prj\project\subfolder\.svn  #  ...
-C:\prj\project\.git            # lives parallell to .svn; make sure you svn ignore it!
-C:\prj\project\.gitignore      # Make sure you ignore .svn, and svn ignore this one too
+	C:\prj\project\                # projects root folder
+	C:\prj\project\subfolder       # some subproject with source code etc.
+	C:\prj\project\.svn            # this goes in the root and all subdirs
+	C:\prj\project\subfolder\.svn  #  ...
+	C:\prj\project\.git            # lives parallell to .svn; make sure you svn ignore it!
+	C:\prj\project\.gitignore      # Make sure you ignore .svn, and svn ignore this one too
 </pre>
 
 <h3>What does git branch master mean?</h3>
@@ -30,10 +30,10 @@ your feature branches on master as soon as you svn up.
 Example .gitignore file:
 
 <pre>
-.svn
-Binaries/
-svnup
-*.obj
+	.svn
+	Binaries/
+	svnup
+	*.obj
 </pre>
 
 <h3>Working on local branches</h3>
