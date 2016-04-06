@@ -2,19 +2,45 @@
 
 <h1>How I use git inside svn repositories</h1>
 
+<i>The purpose of using git at all inside of a svn repository, is to enable "local branches", which just is
+the way I like to work with source code (thinking of a specific bug fix, feature add and so on at a time,
+while still enabling fetching changes from upstream anytime I want to, e.g. daily). So the git repository
+is never pushed anywhere - it just lives locally, inside of the checked out svn repository folder, like so:</i>
+
+<pre>
+C:\prj\project\                # projects root folder
+C:\prj\project\subfolder       # some subproject with source code etc.
+C:\prj\project\.svn            # this goes in the root and all subdirs
+C:\prj\project\subfolder\.svn  #  ...
+C:\prj\project\.git            # lives parallell to .svn; make sure you svn ignore it!
+C:\prj\project\.gitignore      # Make sure you ignore .svn, and svn ignore this one too
+</pre>
+
+<h3>svnup bash script</h3>
+A helper script that simplifies fetching and merging changes from the svn repository.
+
+
 <h3>.gitignore</h3>
-ignore old binary folders and similar (speed up git dev flow)
-ignore svnup
-add .gitignore to svn global ignore pattern
+<ul>
+<li>ignore old binary folders and similar (speed up git dev flow)</li>
+<li>ignore svnup bash script</li>
+<li>add .gitignore to svn global ignore pattern</li>
+</ul>
 
 <h3>Working on local branches</h3>
-git branch, git checkout, git commit
+
+<li>git branch</li>
+<li>git checkout</li>
+<li>git commit</li>
 
 <h3>Fetching changes from svn repo</h3>
-svnup, rebase conflicts (git add, git rebase --continue)
+<li>svnup branchname</li>
+<li>fix conflicts (modify files, git add, git rebase --continue)</li>
 
 <h3>Committing changes to svn repo</h3>
-checkout master, merge branch, svn commit
+<li>checkout master</li>
+<li>merge branch</li>
+<li>svn commit</li>
 
 
 </html>
