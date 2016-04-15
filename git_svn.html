@@ -10,10 +10,11 @@ h1 : { color: #fff; }
 
 <h1>How I use git inside svn repositories</h1>
 
-<i>The purpose of using git at all inside of a svn repository, is to enable "local branches", which just is
-the way I like to work with source code (thinking of a specific bug fix, feature add and so on at a time,
-while still enabling fetching changes from upstream anytime I want to, e.g. daily). So the git repository
-is never pushed anywhere - it just lives locally, inside of the checked out svn repository folder, like so:</i>
+<i>My purpose of using git at all inside of a svn repository is to enable a "local branches" workflow,
+which just isthe way I like to work with source code (thinking of a specific bug fix, feature add and
+so on at a time, while still enabling fetching changes from upstream anytime I want to, e.g. daily).
+So the git repository is never pushed anywhere - it just lives locally, inside of the checked out svn
+repository folder, like so:</i>
 
 <pre>
     C:\prj\project\                # projects root folder
@@ -24,25 +25,10 @@ is never pushed anywhere - it just lives locally, inside of the checked out svn 
     C:\prj\project\.gitignore      # Make sure you ignore .svn, and svn ignore this one too
 </pre>
 
-<h3>What does git branch master mean?</h3>
+<h3>What does gits' master branch mean then?</h3>
 Conceptually, you keep the master branch of your git repository in sync with svn, and then you rebase
-your feature branches on master as soon as you svn up.
-
-<h3>.gitignore</h3>
-<ul>
-<li>ignore old binary folders and similar (speed up git dev flow)</li>
-<li>ignore svnup bash script</li>
-<li>add .gitignore to svn global ignore pattern</li>
-</ul>
-
-Example .gitignore file:
-
-<pre>
-    .svn
-    Binaries/
-    svnup
-    *.obj
-</pre>
+your feature branches on master as soon as you svn up. It can therefore be thought of as the
+"main svn log" of the workflow.
 
 <h3>Working on local branches</h3>
 This is basically as any git workflow: create a branch, check it out, make some changes and commit continually.
@@ -73,6 +59,22 @@ less mundane, I've written a small bash script that automates the robotic parts 
 If you get merge conflicts during rebase, use any text editor to fix the conclicts, then <b>git add</b> the file,
 and <b>git rebase --continue</b>.
 
+
+<h3>.gitignore</h3>
+Some examples of what I put in .gitignore:
+
+<ul>
+<li>old binary folders and similar, to speed up git workflow</li>
+<li>svnup bash script</li>
+</ul>
+
+Examplefile:
+<pre>
+    .svn
+    Binaries/
+    svnup
+    *.obj
+</pre>
 
 
 <h3>Committing changes to svn repo</h3>
