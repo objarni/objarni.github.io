@@ -50,10 +50,23 @@ This is basically as any git workflow: create a branch, check it out, make some 
 <h3>Fetching changes from svn repo</h3>
 This is the toughest part of the workflow as it involves merging changes (merges are always a pain!).
 
-NOTE: This should only be done when you have a clean workspace (nothing un-committed). 
+In theory, what you want to do is:
 
-To make it a little less mundane, I've written a small bash script that automates the robotic parts of it,
-see end of this page. The svnup script is used like this:
+<ul>
+<li>Verify your feature branch is clean, i.e. no uncommitted or untracked files (git status)
+<li>Go to git master branch (git checkout master)
+<li>Perform a svn up command, getting latest changes from your mates
+<li>Add these changes to the git master branch (git add . then commit with auto message)
+<li>Jump back to your feature branch (git checkout myfeature)
+<li>Rebase on master (git rebase master)
+<ul>
+
+NOTE: This should only be done when you have a clean workspace (nothing un-committed). That is step one.
+
+NOTE 2: The svn up command that happens here should *never* cause a merge conflict, as you are only updating from a previous state of the svn repository, to a newer, as you are keeping your changes on other branches than master.
+
+A lot of those steps are the same every time - robot work. So to make it a little
+less mundane, I've written a small bash script that automates the robotic parts of it, see end of this page. The svnup script is used like this:
 
 <pre>   $ ./svnup mybranch</pre>
 
