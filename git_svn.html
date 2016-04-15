@@ -72,9 +72,21 @@ Examplefile:
 
 
 <h3>Committing changes to svn repo</h3>
-<li>checkout master</li>
-<li>merge branch</li>
+
+As with any commit procedure make sure you are up-to-date with the latest changes from main before you commit, see fetching changes from svn repo.
+
+After you've done that, solving all rebase issues and so on, you'd basically merge your feature branch changes to the master branch. Doing that
+should be painless as you've already dealt with all merge issues on your feature branch (doing the rebasing). Finally, you're ready for svn commit.
+
+In pseudo command lines:
+
+<ul>
+<li>./svnup myfeature</li>
+<li>git checkout master
+<li>git merge myfeature</li>
+<li>svn add/remove (new/deleted files)</li>
 <li>svn commit</li>
+</ul>
 
 <h3>The svnup bash script</h3>
 A helper script that simplifies fetching and merging changes from the svn repository.
