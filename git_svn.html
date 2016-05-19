@@ -105,6 +105,7 @@ A helper script that simplifies fetching and merging changes from the svn reposi
 
 <pre>
 # svnup git+svn utility script
+set -e
 if [[ $# -eq 0 ]] ; then
     echo 'Usage: svnup <branchname>'
     echo 'Helper script for git+svn. Will update the master branch with latest'
@@ -114,11 +115,21 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 if [[ $1 == "master" ]]; then
-        echo 'Cannot svnup on master branch, only other branches.'
-        exit 1
+    echo 'Cannot svnup on master branch, only other branches.'
+    exit 1
 fi
 
-set -e
+if [ -z "$(git status --porcelain)" ];
+then
+    echo "Nice, clean branch :)"
+else
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    echo "! ERROR: Branch is DIRTY !"
+    echo "!!!!!! (see below) !!!!!!!"
+    git status
+    exit 1
+fi
+
 git checkout $1
 git checkout master
 svn up
