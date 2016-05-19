@@ -104,7 +104,8 @@ In pseudo command lines:
 A helper script that simplifies fetching and merging changes from the svn repository.
 
 <pre>
-# svnup git+svn utility script
+#!/bin/sh
+# svnup - a minimalistic git+svn utility script
 set -e
 if [[ $# -eq 0 ]] ; then
     echo 'Usage: svnup <branchname>'
