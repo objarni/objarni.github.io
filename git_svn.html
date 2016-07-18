@@ -108,10 +108,10 @@ A helper script that simplifies fetching and merging changes from the svn reposi
 # svnup - a minimalistic git+svn utility script
 set -e
 if [[ $# -eq 0 ]] ; then
-    echo 'Usage: svnup <branchname>'
+    echo 'Usage: svnup &lt;branchname&gt;'
     echo 'Helper script for git+svn. Will update the master branch with latest'
     echo 'changes from svn server, autocommit that to master, jump back to'
-    echo '<branchname> and rebase on master. Stops immediately on any fail.'
+    echo '&lt;branchname&lt; and rebase on master. Stops immediately on any fail.'
     exit 1
 fi
 
