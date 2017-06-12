@@ -14,22 +14,34 @@
 .green { background-color: green; }
 </style>
 <body>
-asoidjiosjdf
   <div id="app">
-    <div class="blue button" id='button6'></div>
-    <div class="green button" id='button7'></div>
+    <div class="button"
+         v-for="btn in buttons"
+           v-bind:class="btn.cssClass"
+           v-on:click="activate(btn.text)">
+       {{ btn.text }}
+    </div>
     {{ message }}
   </div>
 
   <script>
     var app = new Vue({
-      el: '#app',
+      el: "#app",
       data: {
-        message: 'Hello Vue!'
+        message: "Allo!",
+        buttons: [
+         { cssClass: "lightblue", text: "test1" },
+         { cssClass: "green", text: "test1" },
+         { cssClass: "green", text: "test1" },
+         { cssClass: "blue", text: "test1" },
+         { cssClass: "yellow", text: "test1" },
+         { cssClass: "orange", text: "test1" },
+         { cssClass: "red", text: "test2" }
+        ]
       },
       methods: {
-        activate: function() {
-          this.message = "Blue button clicked"
+        activate: function(s) {
+          this.message = s + " button clicked"
         }
       }
     })
