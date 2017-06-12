@@ -15,7 +15,7 @@
 </style>
 <body>
   <div id="app">
-    <div class="blue button" id='button6'></div>
+    <div v-on:click='activate' class="blue button" id='button6'></div>
     <div class="green button" id='button7'></div>
     {{ message }}
   </div>
@@ -25,6 +25,11 @@
       el: '#app',
       data: {
         message: 'Hello Vue!'
+      },
+      methods: {
+        activate: function() {
+          this.message = "Blue button clicked"
+        }
       }
     })
   </script>
