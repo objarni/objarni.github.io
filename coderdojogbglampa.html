@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8" />
+<meta http-equiv="refresh" content="3">
+<html itemscope itemtype="http://schema.org/QAPage">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        function setState(color_value, period_value) {
+            var systemid = 'javascript_example';
+            var route = 'https://api.cilamp.se/v1/' + systemid + '/';
+            var packet = {
+                color: color_value
+            };
+            if (period_value) {
+                packet.period = period_value;
+            }
+            jQuery.ajax({
+                    method: "POST",
+                    url: route,
+                    data: packet
+                })
+                .done(function(data) {
+                    console.log(data);
+                })
+                .fail(function(data) {
+                    console.log(data);
+                });
+        };
+    </script>
+    <style>
+        div {
+            width: 80vw;
+            height: 40vh;
+            text-align: center;
+            margin: auto;
+            padding: 1%;
+            border: 3px solid black;
+            font-size: 350%;
+        }
+        p {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="background-color: blue;" onClick="setState('#00ff00');">
+        <p>Jag står vid dörren! Blinka lampan!</p>
+    </div>
+
+    <div style="background-color: lightgray;" onClick="setState('#ff0000', 3000);">
+        <p>Jag är inne, släck lampan!</p>
+    </div>
+
+</body>
+
+</html>
