@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8" />
+<meta http-equiv="refresh" content="30">
 <html itemscope itemtype="http://schema.org/QAPage">
 
 <head>
@@ -9,7 +10,12 @@
 
         var systemid = 'coderdojogbglampa';
 
-        function setState(systemid, color_value, period_value) {
+        function setFeedback(str) {
+            var feedbackElem = document.getElementById('feedback');
+            feedbackElem.innerHTML = str;
+        }
+
+        function setState(systemid, color_value, period_value, successMsg) {
             var route = 'https://api.cilamp.se/v1/' + systemid + '/';
             var packet = {
                 color: color_value
@@ -17,6 +23,7 @@
             if (period_value) {
                 packet.period = period_value;
             }
+            setFeedback('Ändrar lampa...');
             jQuery.ajax({
                     method: "POST",
                     url: route,
@@ -24,9 +31,11 @@
                 })
                 .done(function(data) {
                     console.log(data);
+                    setFeedback(successMsg);
                 })
                 .fail(function(data) {
                     console.log(data);
+                    setFeedback('Något gick fel. Försök igen.');
                 });
         };
     </script>
@@ -42,17 +51,23 @@
         }
         p {
             vertical-align: middle;
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
 
-    <div style="background-color: blue;" onClick="setState(systemid, '#0000ff', 1500);">
+    <p id='feedback'>Tryck på knapp!</p>
+
+    <div style="background-color: blue;"
+         onClick="setState(systemid, '#0000ff', 1500,
+         'Kodklubbens lampa blinkar. Vi kommer ner!');">
         <p>Jag står vid dörren! Blinka lampan!</p>
     </div>
 
-    <div style="background-color: lightgray;" onClick="setState(systemid, '#000000');">
+    <div style="background-color: lightgray;"
+         onClick="setState(systemid, '#000000', 0, 'Kodklubbens lampa släckt.');">
         <p>Jag är inne, släck lampan!</p>
     </div>
 
