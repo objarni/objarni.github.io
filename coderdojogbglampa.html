@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8" />
-<meta http-equiv="refresh" content="3">
 <html itemscope itemtype="http://schema.org/QAPage">
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
-        function setState(color_value, period_value) {
-            var systemid = 'coderdojogbglampa';
+
+        var systemid = 'coderdojogbglampa';
+
+        function setState(systemid, color_value, period_value) {
             var route = 'https://api.cilamp.se/v1/' + systemid + '/';
             var packet = {
                 color: color_value
@@ -47,11 +48,11 @@
 
 <body>
 
-    <div style="background-color: blue;" onClick="setState('#0000ff', 1500);">
+    <div style="background-color: blue;" onClick="setState(systemid, '#0000ff', 1500);">
         <p>Jag står vid dörren! Blinka lampan!</p>
     </div>
 
-    <div style="background-color: lightgray;" onClick="setState('#000000');">
+    <div style="background-color: lightgray;" onClick="setState(systemid, '#000000');">
         <p>Jag är inne, släck lampan!</p>
     </div>
 
