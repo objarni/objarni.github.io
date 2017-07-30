@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8" />
+<meta http-equiv="refresh" content="3">
+<html itemscope itemtype="http://schema.org/QAPage">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        function setState(color_value, period_value) {
+            var systemid = 'javascript_example';
+            var route = 'https://api.cilamp.se/v1/' + systemid + '/';
+            var packet = {
+                color: color_value
+            };
+            if (period_value) {
+                packet.period = period_value;
+            }
+            jQuery.ajax({
+                    method: "POST",
+                    url: route,
+                    data: packet
+                })
+                .done(function(data) {
+                    console.log(data);
+                })
+                .fail(function(data) {
+                    console.log(data);
+                });
+        };
+    </script>
+    <style>
+        div {
+            width: 90vw;
+            height: 90vh;
+            text-align: center;
+            margin: auto;
+            padding: 1%;
+            border: 3px solid black;
+            font-size: 350%;
+        }
+        .center-vertically {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            }
+    </style>
+</head>
+
+<body>
+
+    <div id='likeButton' style="background-color: #3b5998;" onClick="clicked();">
+        <img class="center-vertically" width="75%" src="fblike.svg">
+    </div>
+
+    <script>
+        function clicked() {
+            console.log('hej');
+        }
+    </script>
+
+</body>
+
+</html>
