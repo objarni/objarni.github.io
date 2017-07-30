@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8" />
-<meta http-equiv="refresh" content="3">
 <html itemscope itemtype="http://schema.org/QAPage">
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
         function setState(color_value, period_value) {
-            var systemid = 'javascript_example';
+            var systemid = 'fblikelampa';
             var route = 'https://api.cilamp.se/v1/' + systemid + '/';
             var packet = {
                 color: color_value
@@ -31,8 +30,8 @@
     </script>
     <style>
         div {
-            width: 90vw;
-            height: 90vh;
+            width: 80vw;
+            height: 80vh;
             text-align: center;
             margin: auto;
             padding: 1%;
@@ -54,8 +53,15 @@
     </div>
 
     <script>
+        function $(id) { return document.getElementById(id); }
         function clicked() {
-            console.log('hej');
+            setState('#3b5998', 1000);
+            $('likeButton').style = 'background-color: #dfe3ee';
+            setTimeout(function() {
+                setState('#000000');
+                $('likeButton').style = 'background-color: #3b5998';
+                },
+                5000);
         }
     </script>
 
