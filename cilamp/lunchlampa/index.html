@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8" />
+<html itemscope itemtype="http://schema.org/QAPage">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        function setState(color_value, period_value) {
+            var systemid = 'lunchlampa';
+            var route = 'https://api.cilamp.se/v1/' + systemid + '/';
+            var packet = {
+                color: color_value
+            };
+            if (period_value) {
+                packet.period = period_value;
+            }
+            jQuery.ajax({
+                    method: "POST",
+                    url: route,
+                    data: packet
+                })
+                .done(function(data) {
+                    console.log(data);
+                })
+                .fail(function(data) {
+                    console.log(data);
+                });
+        };
+    </script>
+    <style>
+        div {
+            width: 90vw;
+            height: 25vh;
+            text-align: center;
+            margin: auto;
+            padding: 1%;
+            border: 3px solid black;
+            font-size: 350%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="background-color: green;" onClick="setState('#00ff00');">
+        Ingen kö
+    </div>
+
+    <div style="background-color: yellow;" onClick="setState('#ffff00');">
+        Mindre än 30 min
+    </div>
+
+    <div style="background-color: red;" onClick="setState('#ff0000');">
+        Mer än 30 min
+    </div>
+
+</body>
+
+</html>

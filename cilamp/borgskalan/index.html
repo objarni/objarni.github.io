@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<style>
+.button {
+  height: 10vh;
+  width: 90vw;
+  margin: 0 auto;
+}
+.blue { background-color: blue; }
+.green { background-color: green; }
+</style>
+<body>
+  <div id="app">
+    <div class="button"
+         v-for="btn in buttons"
+           v-bind:class="btn.cssClass"
+           v-on:click="activate(btn.text)">
+       {{ btn.text }}
+    </div>
+    {{ message }}
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        message: "Allo!",
+        buttons: [
+         { cssClass: "lightblue", text: "test1" },
+         { cssClass: "green", text: "test1" },
+         { cssClass: "green", text: "test1" },
+         { cssClass: "blue", text: "test1" },
+         { cssClass: "yellow", text: "test1" },
+         { cssClass: "orange", text: "test1" },
+         { cssClass: "red", text: "test2" }
+        ]
+      },
+      methods: {
+        activate: function(s) {
+          this.message = s + " button clicked"
+        }
+      }
+    })
+  </script>
+</body>
+</html>
