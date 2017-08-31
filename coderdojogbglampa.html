@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8" />
-<meta http-equiv="refresh" content="30">
+<!-- <meta http-equiv="refresh" content="3"> -->
 <html itemscope itemtype="http://schema.org/QAPage">
 
 <head>
@@ -24,6 +24,7 @@
                 packet.period = period_value;
             }
             setFeedback('Ändrar lampa...');
+            $("#")
             jQuery.ajax({
                     method: "POST",
                     url: route,
@@ -40,35 +41,42 @@
         };
     </script>
     <style>
-        div {
+        .button {
             width: 80vw;
-            height: 40vh;
+            height: 30vh;
             text-align: center;
             margin: auto;
-            padding: 1%;
-            border: 3px solid black;
+            border: 4px ridge gray;
             font-size: 350%;
+        }
+        div {
+            line-height: 20vh;
         }
         p {
             vertical-align: middle;
             text-align: center;
+        }
+        #feedback {
+            font-size: 200%;
         }
     </style>
 </head>
 
 <body>
 
-    <p id='feedback'>Tryck på knapp!</p>
+    <p id='feedback'>Välkommen till CoderDojo Göteborg!</p>
 
-    <div style="background-color: blue;"
-         onClick="setState(systemid, '#0000ff', 1500,
-         'Kodklubbens lampa blinkar. Vi kommer ner!');">
-        <p>Jag står vid dörren! Blinka lampan!</p>
-    </div>
+    <div id="buttons">
+        <div class="button" style="background-color: blue; color: white"
+             onClick="setState(systemid, '#0000ff', 1500,
+             'Kodklubbens lampa blinkar. Vi kommer ner!');">
+            <p>Släpp in mig</p>
+        </div>
 
-    <div style="background-color: lightgray;"
-         onClick="setState(systemid, '#000000', 0, 'Kodklubbens lampa släckt.');">
-        <p>Jag är inne, släck lampan!</p>
+        <div class="button" style="background-color: lightgray;"
+             onClick="setState(systemid, '#000000', 0, 'Kodklubbens lampa släckt.');">
+            <p>Jag är inne</p>
+        </div>
     </div>
 
 </body>
