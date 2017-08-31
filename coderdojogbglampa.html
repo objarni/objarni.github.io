@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8" />
+
 <!-- <meta http-equiv="refresh" content="3"> -->
+
 <html itemscope itemtype="http://schema.org/QAPage">
 
 <head>
@@ -24,7 +26,6 @@
                 packet.period = period_value;
             }
             setFeedback('Ändrar lampa...');
-            $("#")
             jQuery.ajax({
                     method: "POST",
                     url: route,
@@ -49,6 +50,13 @@
             border: 4px ridge gray;
             font-size: 350%;
         }
+        .disabled {
+            background-color: black;
+        }
+        .bluebutton {
+            background-color: blue;
+            color: white
+        }
         div {
             line-height: 20vh;
         }
@@ -66,17 +74,15 @@
 
     <p id='feedback'>Välkommen till CoderDojo Göteborg!</p>
 
-    <div id="buttons">
-        <div class="button" style="background-color: blue; color: white"
-             onClick="setState(systemid, '#0000ff', 1500,
-             'Kodklubbens lampa blinkar. Vi kommer ner!');">
-            <p>Släpp in mig</p>
-        </div>
+    <div id="blinkbutton" class="button bluebutton" 
+         onClick="setState(systemid, '#0000ff', 1500,
+         'Kodklubbens lampa blinkar. Vi kommer ner!');">
+        <p>Släpp in mig</p>
+    </div>
 
-        <div class="button" style="background-color: lightgray;"
-             onClick="setState(systemid, '#000000', 0, 'Kodklubbens lampa släckt.');">
-            <p>Jag är inne</p>
-        </div>
+    <div class="button" style="background-color: lightgray;"
+         onClick="setState(systemid, '#000000', 0, 'Kodklubbens lampa släckt.');">
+        <p>Jag är inne</p>
     </div>
 
 </body>
