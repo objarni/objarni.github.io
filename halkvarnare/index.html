@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!--   <meta http-equiv="refresh" content="5">
+ -->
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Halkvarnare</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="static/css/normalize.css">
+  <link rel="stylesheet" href="static/css/skeleton.css">
+  <link rel="stylesheet" href="static/css/animation.css">
+  <link rel="stylesheet" href="static/css/footer.css?2">
+  <link rel="stylesheet" href="static/css/buttons.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="static/images/favicon.png">
+
+  <!-- jQuery
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- CILAMP wrapper
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="static/shared/json/colortable.json"></script>
+  <script src="static/shared/js/cilamp_wrapper.js"></script>
+
+</head>
+<body height="100vh">
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+
+      <!--     HEADER     -->
+      <div class="row">
+        <div class="twelve columns" style="margin-top: 5%">
+          <h4>Halkvarnare</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="twelve columns">
+          <p>Tryck på knappar för att ändra halkvarnarnas färg</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="six columns">
+          <div id='imagesDiv'>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 5%">
+        <div class="three columns">
+            RUM 1
+        </div>
+        <div class="three columns">
+            <button id="lo1" class="button lowrisk">Lågrisk</button>
+        </div>
+        <div class="three columns">
+            <button id="mid1" class="midrisk">Viss risk</button>
+        </div>
+        <div class="three columns">
+            <button id="hi1" class="highrisk">Högrisk</button>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 5%">
+        <div class="three columns">
+            RUM 2
+        </div>
+        <div class="three columns">
+            <button id="lo2" class="lowrisk">Lågrisk</button>
+        </div>
+        <div class="three columns">
+            <button id="mid2" class="midrisk">Viss risk</button>
+        </div>
+        <div class="three columns">
+            <button id="hi2" class="highrisk">Högrisk</button>
+        </div>
+      </div>
+
+
+      </div>
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<script>
+
+
+  var levels = {
+    1: {
+      name:'lo',
+      color:'00ff00'
+    },    
+    2: {
+      name:'mid',
+      color:'ffdd00'
+    },
+    3: {
+      name:'hi',
+      color:'ff0000'
+    }
+  }
+
+  for(var i=1; i<=2; i++) {
+    for(var j=1; j<=3; j++) {
+      var id = '#' + levels[j].name + i;
+      var data = {
+        system: "Rum" + i,
+        color: levels[j].color
+      }
+      $(id).click(data, function(e) {
+        var sysid = e.data.system
+        var col = e.data.color
+        cilamp_wrapper.setState(sysid, col)
+        console.log(sysid)
+        console.log(col)
+      })
+    }
+  }
+  // // Button implementations
+  // $('#start').click(function() {
+  //   $("#initial").hide()
+  //   $("#session").show()
+  //   $("#pomodoros").html("0 of 4")
+  //   session = program
+  //   pomodorosFinished = 0
+  //   runNextSegment()
+  // });
+
+  // $('#cancel').click(function() {
+  //   clearTimeout(segmentTimeout)
+  //   runSegment(endSegment)
+  // });
+
+</script>
+
+</body>
+</html>

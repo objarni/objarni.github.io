@@ -1,0 +1,32 @@
+colors = 
+[
+    {
+        "name": "red",
+        "colorHex": "#ff0000",
+        "imageSrc": "static/shared/images/red.jpg"
+    },
+    {
+        "name": "green",
+        "colorHex": "#008800",
+        "imageSrc": "static/shared/images/green.jpg"
+    },
+    {
+        "name": "yellow",
+        "colorHex": "#884400",
+        "imageSrc": "static/shared/images/yellow.jpg"
+    },
+    {   "name": "white",
+        "colorHex": "#aaaabb",
+        "imageSrc": "static/shared/images/white.jpg"
+    },
+    {
+        "name": "lightgreen",
+        "colorHex": "#55ff66",
+        "imageSrc": "static/shared/images/lightgreen.jpg"
+    },
+    {
+        "name": "blue",
+        "colorHex": "#0000aa",
+        "imageSrc": "static/shared/images/blue.jpg"
+    }
+]

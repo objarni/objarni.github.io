@@ -1,0 +1,13 @@
+.lowrisk {
+	background-color: #55ff55;
+	color: white;
+}
+
+.midrisk {
+	background-color: #ffff55;
+}
+
+.highrisk {
+	background-color: #ff5555;
+}
+

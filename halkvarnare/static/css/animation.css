@@ -1,0 +1,9 @@
+
+.animated {
+  animation: working 0.5s infinite alternate;
+}
+
+@keyframes working {
+  from { color: #ffffff; }
+  to { color: #1EAEDB; }
+}
