@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <!-- <meta http-equiv="refresh" content="1"> -->
+   <meta charset="utf-8">
+  <title>Nu är det jul!</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+    function setState(color_value, period_value) {
+      var systemid = 'highscore';
+      var route = 'https://api.cilamp.se/v1/' + systemid + '/';
+      var packet = {
+        color: color_value
+      };
+      if (period_value) {
+        packet.period = period_value;
+      }
+      jQuery.ajax({
+        method: "POST",
+        url: route,
+        data: packet
+      })
+      .done(function(data) {
+        console.log(data);
+      })
+      .fail(function(data) {
+        console.log(data);
+      });
+    };
+  </script>
+  <style>
+  div {
+    text-align: center;
+    padding:5%;
+  }
+  span {
+    width: 40vw;
+    height: 40vh;
+    margin: auto;
+    padding: 2%;
+    border: 3px solid black;
+    font-size: 1000%;
+  }</style>
+</head>
+<body>
+
+  <div>
+    <span style="background-color: green;" onClick="setState('#00ff00');">
+      Julgrönt
+    </span>
+    <span style="background-color: red;" onClick="setState('#ff0000', 3000);">
+      Rödvin
+    </span>
+  </div>
+
+  <div>
+    <span style="background-color: lightblue;" onClick="setState('#0000ff');">
+      Isigt
+    </span>
+    <span style="background-color: yellow;" onClick="setState('#ffdd00', 1500);">
+      Eld!
+    </span>
+  </div>
+
+</body>
+</html>
