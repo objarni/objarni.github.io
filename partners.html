@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <!-- <meta http-equiv="refresh" content="5"> -->
+  <title>Contacts at partners</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+
+  <h1>Partner contacts (click for details)</h1>
+  <div id="app">
+
+    <span>
+      <ul>
+        <li v-for="c in contacts">
+          <button :text="c.company" v-on:click="contact=c">
+            {{ c.company }}
+          </button>
+        </li>
+      </ul>
+    </span>
+
+    <span>
+      <center>
+        <span v-if="contact">
+          <image width=450px :src="contact.imagelink">
+          <div>{{ contact.contact }} (aged {{ contact.age}}) from
+            <a target="_blank" :href="contact.homepage" >{{ contact.company }}</a></div>
+          <div>Role: {{ contact.role }}</a></div>
+          <div>First contact: {{ contact.first_contact_date }}
+        </span>
+      </center>
+    </span>
+
+  </div>
+
+  <script>
+
+    var contacts = [
+      {
+        contact: "Martin Kjellstrand",
+        age: 40,
+        company: "Eficode",
+        homepage: "https://eficode.com",
+        imagelink: "https://media.licdn.com/dms/image/C5603AQG9CS55z5r-EA/profile-displayphoto-shrink_800_800/0?e=1536796800&v=beta&t=e1bgD90LT9XtiNIf-d6IdP-wcsLMbhtzg_zKQxZ7ku0",
+        role: "Senior developer and team lead (consultant)",
+        application_area: "Build process monitoring",
+        first_contact_date: "2018-03-01"
+      },
+      {
+        contact: "Marcus Wejderot",
+        age: 38,
+        company: "MEVISIO",
+        homepage: "https://mevisio.com",
+        imagelink: "https://media.licdn.com/dms/image/C5603AQEtyrSPRX5KAw/profile-displayphoto-shrink_800_800/0?e=1536796800&v=beta&t=gszdRbAVGSo_yLaeyFnnjjeFap_peRtZnTBQn332EKo",
+        role: "Senior developer, CEO and co-founder",
+        company_usp: "Best DevOps consultancy in Scandinavia",
+        application_area: "Extension of Lean Dashboards",
+        first_contact_date: "2018-01-09"
+      },
+      {
+        contact: "Pierre Lindmark",
+        age: 39,
+        company: "WinningTemp",
+        homepage: "https://winningtemp.com",
+        imagelink: "http://d29ly7uq16xz5t.cloudfront.net/design/slush-2016/Pierre-Lindmark_Winningtemp-630.jpg",
+        role: "CEO, founder",
+        company_usp: "Proactive employee wellbeing monitoring",
+        application_area: "Bring out WinningTemp measures to real office space",
+        first_contact_date: "2018-05-07"
+      },
+      {
+        contact: "Jan Garefelt",
+        age: 49,
+        company: "Multisoft",
+        homepage: "https://multisoft.se",
+        imagelink: "https://media.licdn.com/dms/image/C5103AQH2Sh5sfkpRog/profile-displayphoto-shrink_800_800/0?e=1536796800&v=beta&t=E9q7ek8N6eJ5AEJBpxsiHMJkVK6hH-o0_8258ODthZE",
+        role: "Business analyst/consultant",
+        company_usp: "Enterprise consultancy/integrator/developer - 'Microsoft apps'",
+        application_area: "Unclear",
+        first_contact_date: "2017-02-28"
+      }
+    ]
+
+    contacts.sort(function(a, b) {
+      return new Date(a.first_contact_date) - new Date(b.first_contact_date)
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        contact: contacts[0],
+        contacts
+      }
+    }) 
+
+  </script>
+</body>
+</html>
+
+<!--
+  Jag vill ha grunddatat i en array utanför allt som
+  har med Vue att göra ("API").
+
+  Både "details"-"appen" (orkar inte lära mig om components nu)
+  och "list"-"appen" kommer att använda sig av detta data.
+
+  Och användaren kan klicka på "next-prev" knappar för att
+  stega sig igenom partners. Båda komponenterna kommer att
+  uppdateras: detaljvyn (såklart), men även listvyn (bold av
+  fokuserad partner).
+
+  Om vi tar ett steg tillbaka och börjar med en interation
+  av länkar + inga next/prev knappar, så att jag kommer igång
+  med grunderna av Vue innan jag tar tag i mera avancerade delar?
+
+  I så fall behöver jag klick-event på länkarna som uppdaterar
+  detaljvy, och ingen boldifiering i listan. Skulle det kunna
+  vara enbart en Vue-app då helt enkelt? Hur kommunicera till
+  vue-appen från länkarna?
+
+  1) genom metod i v-appen? Som får index att visa?
+  2) genom prop i v-appen? Som får partner-objekt att visa?
+
+  OK jag itererar. Första iteration: enbart en Vue app - detaljvyn.
+
+  Denna har en data som helt enkelt pekar ut globala dataarrayen, samt
+  ett index (default null dvs ingen partner vald).
+
+  Sedan finns det en lista med länkar, som vid klick anropar en metod
+  "focusPartner(index)" där index är hårdkodad siffra från 0 till
+  #partners - 1. Egentligen skulle det kunna vara en "app" det med,
+  eftersom det bara är en vy av datan.
+
+  OK, så två appar där den ena är "interaktiv" och denna andra "passiv".
+
+
+
+  -->
