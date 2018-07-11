@@ -9,7 +9,9 @@
 
 <body>
 
-  <h1>Partner contacts (click for details)</h1>
+  <h1>Partner contacts</h1>
+  <h2>Sorted by first date of contact</h2>
+  <h3>Click any button to view details</h3>
   <div id="app">
 
     <span>
@@ -22,14 +24,17 @@
       </ul>
     </span>
 
-    <span>
+    <span width=45vw>
       <center>
         <span v-if="contact">
           <image width=450px :src="contact.imagelink">
           <div>{{ contact.contact }} (aged {{ contact.age}}) from
             <a target="_blank" :href="contact.homepage" >{{ contact.company }}</a></div>
-          <div>Role: {{ contact.role }}</a></div>
-          <div>First contact: {{ contact.first_contact_date }}
+          <br>
+          <div><b>Role:</b> {{ contact.role }}</a></div>
+          <div><b>First contact:</b> {{ contact.first_contact_date }}</div>
+          <div><b>Company focus: </b>{{ contact.company_usp }}</div>
+          <div width=45vw v-if=contact.testimonial><br><b>Testimonial:</b><br>"{{ contact.testimonial }}"</div>
         </span>
       </center>
     </span>
@@ -46,6 +51,7 @@
         homepage: "https://eficode.com",
         imagelink: "https://media.licdn.com/dms/image/C5603AQG9CS55z5r-EA/profile-displayphoto-shrink_800_800/0?e=1536796800&v=beta&t=e1bgD90LT9XtiNIf-d6IdP-wcsLMbhtzg_zKQxZ7ku0",
         role: "Senior developer and team lead (consultant)",
+        company_usp: "Best DevOps consultancy in Scandinavia",
         application_area: "Build process monitoring",
         first_contact_date: "2018-03-01"
       },
@@ -56,7 +62,7 @@
         homepage: "https://mevisio.com",
         imagelink: "https://media.licdn.com/dms/image/C5603AQEtyrSPRX5KAw/profile-displayphoto-shrink_800_800/0?e=1536796800&v=beta&t=gszdRbAVGSo_yLaeyFnnjjeFap_peRtZnTBQn332EKo",
         role: "Senior developer, CEO and co-founder",
-        company_usp: "Best DevOps consultancy in Scandinavia",
+        company_usp: "Tailor-made Lean Dashboars",
         application_area: "Extension of Lean Dashboards",
         first_contact_date: "2018-01-09"
       },
@@ -78,9 +84,45 @@
         homepage: "https://multisoft.se",
         imagelink: "https://media.licdn.com/dms/image/C5103AQH2Sh5sfkpRog/profile-displayphoto-shrink_800_800/0?e=1536796800&v=beta&t=E9q7ek8N6eJ5AEJBpxsiHMJkVK6hH-o0_8258ODthZE",
         role: "Business analyst/consultant",
-        company_usp: "Enterprise consultancy/integrator/developer - 'Microsoft apps'",
+        company_usp: "Enterprise consultancy/integrator/developer - 'Microsoft applications shop'",
         application_area: "Unclear",
-        first_contact_date: "2017-02-28"
+        first_contact_date: "2017-02-28",
+        testimonial: "Att jämföra BI-Beacon med lågprisalternativen känns som att jämföra arkadsspel med mobilspel"
+      },
+      {
+        contact: "Daniel Sjögren",
+        age: "30?",
+        company: "Permobil",
+        homepage: "https://permobil.se",
+        imagelink: "https://media.licdn.com/dms/image/C4D03AQGm-o-OwMks9Q/profile-displayphoto-shrink_800_800/0?e=1536796800&v=beta&t=pvG8zYzcwF4kZFDwWDC8Dt82ke-TxILDDAgvgmuO-9k",
+        role: "Business analyst/consultant",
+        company_usp: "High quality advanced mechanized wheel chairs",
+        application_area: "Support ticket type indication",
+        first_contact_date: "2018-03-07",
+        testimonial: "Jag gillar enkelheten i BI-Beacon"
+      },
+      {
+        contact: "Torbjörn Danielsson",
+        age: "55",
+        company: "Virtual Manufacturing",
+        homepage: "https://virtual.se",
+        imagelink: "https://media.licdn.com/dms/image/C5603AQGahN7t6TzhZA/profile-displayphoto-shrink_800_800/0?e=1536796800&v=beta&t=tM4PaoIpFNiLleP2WOj4lvZangQJa1YMPeKC1cwOiqQ",
+        role: "Business development - former CEO",
+        company_usp: "Help companies implement Lean Production from A to Z",
+        application_area: "Lean lamp?",
+        first_contact_date: "2018-04-13",
+        testimonial: "Vem är stjärndesignern?"
+      },
+      {
+        contact: "Johan Lander",
+        age: "55",
+        company: "Ascenda",
+        homepage: "https://virtual.se",
+        imagelink: "https://pbs.twimg.com/profile_images/1509427400/johanLander_400x400.jpg",
+        role: "Cloud architect / SharePoing BI specialist",
+        company_usp: "Modern cloud consulting / SharePoint integration",
+        application_area: "Support category indicator as of now, interested in more",
+        first_contact_date: "2018-05-04"
       }
     ]
 
@@ -138,4 +180,4 @@
 
 
 
-  -->
+ 
