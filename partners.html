@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- <meta http-equiv="refresh" content="3"> -->
   <meta charset="utf-8"/>
-  <!-- <meta http-equiv="refresh" content="5"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contacts at partners</title>
   <script src="https://unpkg.com/vue"></script>
 </head>
+<style>
+@media screen and (max-width: 900px) {
+  button {
+    width: 90vw;
+    font-size: 20px;
+  }
+  div {
+    margin:auto;
+  }
+}
+</style>
 
 <body>
 
   <h1>Partner contacts</h1>
   <h2>Sorted by first date of contact</h2>
   <h3>Click any button to view details</h3>
+
   <div id="app">
 
-    <span>
-      <ul>
-        <li v-for="c in contacts">
-          <button :text="c.company" v-on:click="contact=c">
-            {{ c.company }}
-          </button>
-        </li>
-      </ul>
-    </span>
+    <div v-for="c in contacts">
+      <button :text="c.company" v-on:click="contact=c">
+        {{ c.company }}
+      </button>
+    </div>
 
     <span width=45vw>
       <center>
